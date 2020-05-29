@@ -1,16 +1,23 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {Container} from '@material-ui/core';
 import Header from './Header/Header';
 import Users from "./Users/Users";
+import Albums from "./Albums/Albums";
 
 function App() {
   return (
-    <div className="App">
-      <Container maxWidth="lg">
-        <Header />
-        <Users />
-      </Container>
-    </div>
+    <Router>
+      <div className="App">
+        <Container maxWidth="lg">
+          <Header />
+          <Switch>
+            <Route path="/" component={Users} exact />
+            <Route path="/:id/albums" component={Albums} />
+          </Switch>
+        </Container>
+      </div>
+    </Router>
   );
 }
 

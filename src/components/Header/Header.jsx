@@ -1,14 +1,15 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import logo from "../../img/logo.svg";
 import classes from './Header.module.css';
 
 const Header = () => {
   return (
     <header className={classes.Header}>
-      <a href="/" className={classes.Logo}>
+      <Link to="/" className={classes.Logo}>
         <img src={logo} alt="Portfolio City logo"/>
         <span>Portfolio City</span>
-      </a>
+      </Link>
     </header>
   )
 };

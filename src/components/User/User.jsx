@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import classes from './User.module.css'
 
 const User = ({user}) => {
@@ -7,7 +8,7 @@ const User = ({user}) => {
       <div className={classes.Image}>{user.name[0]}</div>
       <h3 className={classes.Title}>{user.name}</h3>
       <p>{user.address.city}</p>
-      <a href="#" className={classes.Portfolio}>View portfolio</a>
+      <Link to={`/${user.id}/albums`} className={classes.Portfolio}>View portfolio</Link>
     </div>
   )
 };
