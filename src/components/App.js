@@ -14,6 +14,7 @@ function App() {
           <Switch>
             <Route path="/" component={Users} exact />
             <Route path="/albums/:id" component={Albums} />
+            {/*<Route path="/albums/:id/photos" component={Photos} />*/}
           </Switch>
         </Container>
       </div>
