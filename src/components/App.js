@@ -4,6 +4,7 @@ import {Container} from '@material-ui/core';
 import Header from './Header/Header';
 import Users from "./Users/Users";
 import Albums from "./Albums/Albums";
+import Photos from "./Photos/Photos";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" component={Users} exact />
-            <Route path="/albums/:id" component={Albums} />
-            {/*<Route path="/albums/:id/photos" component={Photos} />*/}
+            <Route path="/:user/albums" component={Albums} />
+            <Route path="/:user/album_:album" component={Photos} />
           </Switch>
         </Container>
       </div>

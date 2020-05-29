@@ -4,9 +4,9 @@ import classes from './Album.module.css'
 
 const Album = ({album}) => {
   return (
-    <Link to={`/albums/${album.id}/photos`} className={classes.Album}>
+    <Link to={`/${album.userId}/album_${album.id}`} className={classes.Album}>
       <div className={classes.Image}>Image</div>
-      <h3 className={classes.Title}><Link to={`/albums/${album.id}/photos`}>{album.title}</Link></h3>
+      <h3 className={classes.Title}>{album.title}</h3>
       <p>Photos: qty</p>
     </Link>
   )

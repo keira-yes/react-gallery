@@ -1,18 +1,17 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import Album from "../Album/Album";
 
-class Albums extends React.Component {
+class Photos extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      albums: []
+      photos: []
     }
   }
 
-  getAlbums = () => {
-    fetch(`https://jsonplaceholder.typicode.com/albums?userId=${this.props.match.params.user}`)
+  getPhotos = () => {
+    fetch(`https://jsonplaceholder.typicode.com/albums/${this.props.match.params.album}/photos`)
       .then(response => {
         if (response.ok) {
           return response.json()
@@ -21,22 +20,23 @@ class Albums extends React.Component {
           throw new Error(response.statusText)
         }
       })
-      .then(data => this.setState({albums: data}))
+      .then(data => this.setState({photos: data}))
       .catch(error => console.log(error.message))
   };
 
   componentDidMount() {
-    this.getAlbums()
+    this.getPhotos()
   }
 
   render() {
-    const {albums} = this.state;
+    const {photos} = this.state;
+    console.log(photos);
     return (
       <Grid container spacing={3}>
-        {albums.map(item => <Grid item xs={3} key={item.id}><Album album={item} /></Grid>)}
+        {photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
       </Grid>
     )
   }
 }
 
-export default Albums;
+export default Photos;
