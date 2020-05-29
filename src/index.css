@@ -77,9 +77,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-.wrapper {
-  max-width: 1270px;
-  margin: 0 auto;
-  padding: 0 50px;
-}

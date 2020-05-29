@@ -1,4 +1,6 @@
 import React from 'react';
+import {Grid} from '@material-ui/core';
+import User from "../User/User";
 
 class Users extends React.Component {
   constructor(props) {
@@ -31,13 +33,9 @@ class Users extends React.Component {
     const {users} = this.state;
 
     return (
-      <ul>
-        {users.map(item => {
-          return (
-            <div key={item.id}>{item.name}</div>
-          )
-        })}
-      </ul>
+      <Grid container spacing={3}>
+        {users.map(item => <Grid item xs={3} key={item.id}><User user={item}/></Grid>)}
+      </Grid>
     )
   }
 }
