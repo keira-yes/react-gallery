@@ -13,7 +13,7 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" component={Users} exact />
-            <Route path="/:id/albums" component={Albums} />
+            <Route path="/albums/:id" component={Albums} />
           </Switch>
         </Container>
       </div>

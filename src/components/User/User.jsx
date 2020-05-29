@@ -8,7 +8,7 @@ const User = ({user}) => {
       <div className={classes.Image}>{user.name[0]}</div>
       <h3 className={classes.Title}>{user.name}</h3>
       <p>{user.address.city}</p>
-      <Link to={`/${user.id}/albums`} className={classes.Portfolio}>View portfolio</Link>
+      <Link to={`/albums/${user.id}`} className={classes.Portfolio}>View portfolio</Link>
     </div>
   )
 };
