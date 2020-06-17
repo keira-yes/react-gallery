@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
 import Album from "../Album/Album";
+import classes from './Albums.module.css';
 
 class Albums extends React.Component {
   constructor(props) {
@@ -32,9 +33,12 @@ class Albums extends React.Component {
   render() {
     const {albums} = this.state;
     return (
-      <Grid container spacing={3}>
-        {albums.map(item => <Grid item xs={3} key={item.id}><Album album={item} /></Grid>)}
-      </Grid>
+      <div className={classes.Albums}>
+        <h1 className="h1-title">Albums</h1>
+        <Grid container spacing={3}>
+          {albums.map(item => <Grid item xs={3} key={item.id}><Album album={item} /></Grid>)}
+        </Grid>
+      </div>
     )
   }
 }

@@ -30,7 +30,7 @@ class Photos extends React.Component {
 
   render() {
     const {photos} = this.state;
-    console.log(photos);
+    console.log(this.props);
     return (
       <Grid container spacing={3}>
         {photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
