@@ -24,17 +24,25 @@ class Photos extends React.Component {
       .catch(error => console.log(error.message))
   };
 
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   componentDidMount() {
     this.getPhotos()
   }
 
   render() {
     const {photos} = this.state;
-    console.log(this.props);
+    console.log(photos.length);
+    console.log(photos);
     return (
-      <Grid container spacing={3}>
-        {photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
-      </Grid>
+      <div>
+        <input type="button" value="Back" onClick={this.goBack}/>
+        <Grid container spacing={3}>
+          {photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
+        </Grid>
+      </div>
     )
   }
 }

@@ -27,7 +27,7 @@ class Albums extends React.Component {
   };
 
   componentDidMount() {
-    this.getAlbums()
+    this.getAlbums();
   }
 
   render() {
