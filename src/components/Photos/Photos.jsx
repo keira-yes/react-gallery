@@ -1,5 +1,8 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
+import {connect} from "react-redux";
+// import { bindActionCreators } from 'redux'
+import {getPhotos} from "../../redux/info/info.actions";
 
 class Photos extends React.Component {
   constructor(props) {
@@ -10,7 +13,7 @@ class Photos extends React.Component {
     }
   }
 
-  getPhotos = () => {
+  getPhoto = () => {
     fetch(`https://jsonplaceholder.typicode.com/albums/${this.props.match.params.album}/photos`)
       .then(response => {
         if (response.ok) {
@@ -20,7 +23,7 @@ class Photos extends React.Component {
           throw new Error(response.statusText)
         }
       })
-      .then(data => this.setState({photos: data}))
+      .then(data => this.props.getPhotos(data))
       .catch(error => console.log(error.message))
   };
 
@@ -29,13 +32,12 @@ class Photos extends React.Component {
   };
 
   componentDidMount() {
-    this.getPhotos()
+    this.getPhoto()
   }
 
   render() {
-    const {photos} = this.state;
-    console.log(photos.length);
-    console.log(photos);
+    const {photos} = this.props;
+    // console.log(photos);
     return (
       <div>
         <input type="button" value="Back" onClick={this.goBack}/>
@@ -47,4 +49,14 @@ class Photos extends React.Component {
   }
 }
 
-export default Photos;
+const mapStateToProps = state => {
+  return {
+    photos: state.info.photos
+  }
+};
+
+const mapDispatchToProps = {
+  getPhotos
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Photos);
