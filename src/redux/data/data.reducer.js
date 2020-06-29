@@ -1,4 +1,4 @@
-import * as types from './info.types';
+import * as types from './data.types';
 
 const initialState = {
   photos: [],
@@ -6,7 +6,7 @@ const initialState = {
   errorFetchPhotos: ''
 };
 
-const infoReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.UPDATE_PHOTOS:
       return {...state, photos: action.payload};
@@ -19,4 +19,4 @@ const infoReducer = (state = initialState, action) => {
   }
 };
 
-export default infoReducer;
+export default dataReducer;

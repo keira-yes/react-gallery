@@ -1,4 +1,4 @@
-import * as types from './info.types';
+import * as types from './data.types';
 
 export const fetchPhotos = album => dispatch => {
   dispatch(fetchRequestPhotos(true));
