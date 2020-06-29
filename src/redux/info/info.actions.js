@@ -15,7 +15,10 @@ export const fetchPhotos = album => dispatch => {
       dispatch(fetchRequestPhotos(false));
       dispatch(updatePhotos(data));
     })
-    .catch(error => dispatch(errorRequestPhotos(error.message)))
+    .catch(error => {
+      dispatch(fetchRequestPhotos(false));
+      dispatch(errorRequestPhotos(error.message))
+    })
 };
 
 export const fetchRequestPhotos = payload => {

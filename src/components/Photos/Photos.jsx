@@ -5,27 +5,6 @@ import {connect} from "react-redux";
 import {fetchPhotos, updatePhotos} from "../../redux/info/info.actions";
 
 class Photos extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //     photos: []
-  //   }
-  // }
-
-  // getPhoto = () => {
-  //   fetch(`https://jsonplaceholder.typicode.com/albums/${this.props.match.params.album}/photos`)
-  //     .then(response => {
-  //       if (response.ok) {
-  //         return response.json()
-  //       }
-  //       else {
-  //         throw new Error(response.statusText)
-  //       }
-  //     })
-  //     .then(data => this.props.updatePhotos(data))
-  //     .catch(error => console.log(error.message))
-  // };
 
   goBack = () => {
     this.props.history.goBack();
@@ -38,10 +17,13 @@ class Photos extends React.Component {
   }
 
   render() {
-    const {photos} = this.props;
+    const {album} = this.props.match.params;
+    const {photos, isLoading, errorFetchPhotos, fetchPhotos} = this.props;
     return (
       <div>
         <input type="button" value="Back" onClick={this.goBack}/>
+        {isLoading && <p>Loading...</p>}
+        {errorFetchPhotos && <p>{errorFetchPhotos}. <button onClick={() => fetchPhotos(album)}>Try again!</button></p>}
         <Grid container spacing={3}>
           {photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
         </Grid>
@@ -52,7 +34,9 @@ class Photos extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    photos: state.info.photos
+    photos: state.info.photos,
+    isLoading: state.info.isLoading,
+    errorFetchPhotos: state.info.errorFetchPhotos
   }
 };
 
