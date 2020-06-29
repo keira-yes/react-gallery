@@ -2,12 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from "./rootReducer";
 
-const logger = store => next => action => {
-  console.log("store", store.getState());
-  console.log('type', action.type);
-  console.log('payload', action.payload);
+const thunk = ({dispatch, getState}) => next => action => {
+  if (typeof action === "function") {
+    return action(dispatch, getState);
+  }
   return next(action);
 };
 
-let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
+let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 export default store;
