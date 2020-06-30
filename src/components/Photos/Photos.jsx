@@ -10,8 +10,7 @@ class Photos extends React.Component {
 
   componentDidMount() {
     const {album} = this.props.match.params;
-    const {dataActions} = this.props;
-    dataActions.fetchPhotos(album);
+    this.props.dataActions.fetchPhotos(album);
   }
 
   render() {
@@ -20,11 +19,12 @@ class Photos extends React.Component {
     return (
       <div>
         <input type="button" value="Back" onClick={this.goBack}/>
-        {data.isLoading && <p>Loading...</p>}
-        {data.errorFetchPhotos && <p>{data.errorFetchPhotos}. <button onClick={() => dataActions.fetchPhotos(album)}>Try again!</button></p>}
-        <Grid container spacing={3}>
-          {data.photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
-        </Grid>
+        {data.isLoading ? <p>Loading...</p> :
+          <Grid container spacing={3}>
+            {data.photos.map(item => <Grid item xs={2} key={item.id}><img src={item.thumbnailUrl} alt={item.title}/></Grid>)}
+          </Grid>
+        }
+        {data.errorDataMessage && <p>Something went wrong. {data.errorDataMessage}. <button onClick={() => dataActions.fetchPhotos(album)}>Please try again!</button></p>}
       </div>
     )
   }

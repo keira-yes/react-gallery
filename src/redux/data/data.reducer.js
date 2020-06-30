@@ -1,19 +1,22 @@
 import * as types from './data.types';
 
 const initialState = {
-  photos: [],
   isLoading: false,
-  errorFetchPhotos: ''
+  errorDataMessage: '',
+  users: [],
+  photos: []
 };
 
 const dataReducer = (state = initialState, action) => {
   switch(action.type) {
+    case types.DATA_LOADING :
+      return {...state, isLoading: action.payload};
+    case types.DISPLAY_DATA_ERROR :
+      return {...state, errorDataMessage: action.payload};
+    case types.UPDATE_USERS:
+      return {...state, users: action.payload};
     case types.UPDATE_PHOTOS:
       return {...state, photos: action.payload};
-    case types.FETCH_REQUEST_PHOTOS :
-      return {...state, isLoading: action.payload};
-    case types.ERROR_REQUEST_PHOTOS :
-      return {...state, errorFetchPhotos: action.payload};
     default:
       return state;
   }
