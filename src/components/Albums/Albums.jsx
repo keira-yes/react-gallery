@@ -6,6 +6,10 @@ import {useData} from '../../hoc/useData';
 
 class Albums extends React.Component {
 
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   componentDidMount() {
     const {user} = this.props.match.params;
     this.props.dataActions.fetchAlbums(user);
@@ -17,6 +21,7 @@ class Albums extends React.Component {
     return (
       <div className={classes.Albums}>
         <h1 className="h1-title">Albums</h1>
+        <button type="button" className="back-btn" onClick={this.goBack}>Back to Residents</button>
         {data.isLoading ? <p>Loading...</p> :
           <Grid container spacing={3}>
             {data.albums.map(item => <Grid item xs={3} key={item.id}><Album album={item}/></Grid>)}
