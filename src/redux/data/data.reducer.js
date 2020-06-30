@@ -4,6 +4,7 @@ const initialState = {
   isLoading: false,
   errorDataMessage: '',
   users: [],
+  albums: [],
   photos: []
 };
 
@@ -15,6 +16,8 @@ const dataReducer = (state = initialState, action) => {
       return {...state, errorDataMessage: action.payload};
     case types.UPDATE_USERS:
       return {...state, users: action.payload};
+    case types.UPDATE_ALBUMS:
+      return {...state, albums: action.payload};
     case types.UPDATE_PHOTOS:
       return {...state, photos: action.payload};
     default:

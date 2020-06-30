@@ -1,4 +1,5 @@
 export const DATA_LOADING = 'DATA_LOADING';
 export const DISPLAY_DATA_ERROR = 'DISPLAY_DATA_ERROR';
 export const UPDATE_USERS = 'UPDATE_USERS';
+export const UPDATE_ALBUMS = 'UPDATE_ALBUMS';
 export const UPDATE_PHOTOS = 'UPDATE_PHOTOS';

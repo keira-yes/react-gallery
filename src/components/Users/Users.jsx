@@ -5,13 +5,6 @@ import classes from './Users.module.css';
 import {useData} from '../../hoc/useData';
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      users: []
-    }
-  }
 
   componentDidMount() {
     this.props.dataActions.fetchUsers();

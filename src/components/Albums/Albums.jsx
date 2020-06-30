@@ -2,45 +2,30 @@ import React from 'react';
 import {Grid} from '@material-ui/core';
 import Album from "../Album/Album";
 import classes from './Albums.module.css';
+import {useData} from '../../hoc/useData';
 
 class Albums extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      albums: []
-    }
-  }
-
-  getAlbums = () => {
-    fetch(`https://jsonplaceholder.typicode.com/albums?userId=${this.props.match.params.user}`)
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-        else {
-          throw new Error(response.statusText)
-        }
-      })
-      .then(data => this.setState({albums: data}))
-      .catch(error => console.log(error.message))
-  };
 
   componentDidMount() {
-    this.getAlbums();
+    const {user} = this.props.match.params;
+    this.props.dataActions.fetchAlbums(user);
   }
 
   render() {
-    const {albums} = this.state;
+    const {user} = this.props.match.params;
+    const {data, dataActions} = this.props;
     return (
       <div className={classes.Albums}>
         <h1 className="h1-title">Albums</h1>
-        <Grid container spacing={3}>
-          {albums.map(item => <Grid item xs={3} key={item.id}><Album album={item} /></Grid>)}
-        </Grid>
+        {data.isLoading ? <p>Loading...</p> :
+          <Grid container spacing={3}>
+            {data.albums.map(item => <Grid item xs={3} key={item.id}><Album album={item}/></Grid>)}
+          </Grid>
+        }
+        {data.errorDataMessage && <p>Something went wrong. {data.errorDataMessage}. <button onClick={() => dataActions.fetchAlbums(user)}>Please try again!</button></p>}
       </div>
     )
   }
 }
 
-export default Albums;
+export default useData(Albums);
