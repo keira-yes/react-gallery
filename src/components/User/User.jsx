@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import classes from './User.module.css'
 
@@ -14,3 +15,7 @@ const User = ({user}) => {
 };
 
 export default User;
+
+User.propTypes = {
+  user: PropTypes.object.isRequired,
+};

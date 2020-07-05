@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +9,6 @@ import classes from './Album.module.css';
 import {useData} from '../../hoc/useData';
 
 const Album = ({album, albumsPhotos, errorAlbumsPhotos, loading}) => {
-
   return (
     <Link to={`/${album.userId}/album_${album.id}`} className={classes.Album}>
       <Card className={classes.Card}>
@@ -32,3 +32,10 @@ const Album = ({album, albumsPhotos, errorAlbumsPhotos, loading}) => {
 };
 
 export default useData(Album);
+
+Album.propTypes = {
+  album: PropTypes.object.isRequired,
+  albumsPhotos: PropTypes.array.isRequired,
+  errorAlbumsPhotos: PropTypes.string,
+  loading: PropTypes.bool
+};
