@@ -7,26 +7,28 @@ import cover from './../../img/cover.jpg';
 import classes from './Album.module.css';
 import {useData} from '../../hoc/useData';
 
-class Album extends React.Component {
-  render() {
-    const {album} = this.props;
+const Album = ({album, albumsPhotos, errorAlbumsPhotos, loading}) => {
 
-    return (
-      <Link to={`/${album.userId}/album_${album.id}`} className={classes.Album}>
-        <Card className={classes.Card}>
-          <CardMedia
-            image={cover}
-            title="Contemplative Reptile"
-            className={classes.Image}
-          />
-          <CardContent>
-            <h3 className={classes.Title}>{album.title}</h3>
-            <p className={classes.Qty}>Photos: qty</p>
-          </CardContent>
-        </Card>
-      </Link>
-    )
-  }
-}
+  return (
+    <Link to={`/${album.userId}/album_${album.id}`} className={classes.Album}>
+      <Card className={classes.Card}>
+        <CardMedia
+          image={cover}
+          title="Contemplative Reptile"
+          className={classes.Image}
+        />
+        <CardContent>
+          <h3 className={classes.Title}>{album.title}</h3>
+          <p className={classes.Qty}>Photos:
+            {loading ? <span>Loading...</span> :
+              <span className={classes.Number}>{albumsPhotos.filter(item => Number(album.id) === Number(item.albumId)).length}</span>
+            }
+            {errorAlbumsPhotos && {errorAlbumsPhotos}}
+          </p>
+        </CardContent>
+      </Card>
+    </Link>
+  )
+};
 
 export default useData(Album);
