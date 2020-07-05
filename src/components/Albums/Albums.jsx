@@ -15,10 +15,6 @@ class Albums extends React.Component {
     }
   }
 
-  goBack = () => {
-    this.props.history.goBack();
-  };
-
   fetchAlbumsPhotos = () => {
     this.setState({loading: true});
     fetch('https://jsonplaceholder.typicode.com/photos')
@@ -48,7 +44,7 @@ class Albums extends React.Component {
     return (
       <div className={classes.Albums}>
         <h1 className="h1-title">Albums</h1>
-        <button type="button" className="back-btn" onClick={this.goBack}>Back to Residents</button>
+        <button type="button" className="back-btn" onClick={() => this.props.history.goBack()}>Back to Residents</button>
         {data.isLoading ? <p>Loading...</p> :
           <Grid container spacing={3}>
             {data.albums.map(item => <Grid item xs={3} key={item.id}>
