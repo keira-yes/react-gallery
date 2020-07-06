@@ -8,6 +8,7 @@ import cover from './../../img/cover.jpg';
 import classes from './Album.module.css';
 
 class Album extends React.Component {
+  _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -30,12 +31,21 @@ class Album extends React.Component {
           throw new Error(response.statusText)
         }
       })
-      .then(data => this.setState({albumsPhotos: data, loading: false}))
+      .then(data => {
+        if (this._isMounted) {
+          this.setState({albumsPhotos: data, loading: false})
+        }
+      })
       .catch(error => this.setState({errorAlbumsPhotos: error, loading: false}))
   };
 
   componentDidMount() {
+    this._isMounted = true;
     this.fetchAlbumsPhotos();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
