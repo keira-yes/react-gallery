@@ -2,9 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {Container} from '@material-ui/core';
 import Header from './Header/Header';
-import Users from "./Users/Users";
-import Albums from "./Albums/Albums";
-import Photos from "./Photos/Photos";
+import Users from "./pages/Users/Users";
+import Albums from "./pages/Albums/Albums";
+import Photos from "./pages/Photos/Photos";
 
 function App() {
   return (

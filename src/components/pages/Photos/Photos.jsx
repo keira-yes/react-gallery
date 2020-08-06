@@ -3,12 +3,11 @@ import {Grid} from '@material-ui/core';
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { SRLWrapper } from "simple-react-lightbox";
 import classes from './Photos.module.css'
-import {useData} from '../../hoc/useData';
+import {useData} from '../../../hoc/useData';
 
 class Photos extends React.Component {
 
   componentDidMount() {
-    console.log(this.props.match)
     const {album_id} = this.props.match.params;
     this.props.dataActions.fetchPhotos(album_id);
   }

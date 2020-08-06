@@ -1,8 +1,8 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import User from "../User/User";
+import User from "./User/User";
 import classes from './Users.module.css';
-import {useData} from '../../hoc/useData';
+import {useData} from '../../../hoc/useData';
 
 class Users extends React.Component {
 
