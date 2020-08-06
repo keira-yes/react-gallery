@@ -7,12 +7,12 @@ import {useData} from '../../hoc/useData';
 class Albums extends React.Component {
 
   componentDidMount() {
-    const {user} = this.props.match.params;
-    this.props.dataActions.fetchAlbums(user);
+    const {user_id} = this.props.match.params;
+    this.props.dataActions.fetchAlbums(user_id);
   }
 
   render() {
-    const {user} = this.props.match.params;
+    const {user_id} = this.props.match.params;
     const {data, dataActions} = this.props;
 
     return (
@@ -24,7 +24,7 @@ class Albums extends React.Component {
             {data.albums.map(item => <Grid item xs={3} key={item.id}><Album album={item}/></Grid>)}
           </Grid>
         }
-        {data.errorDataMessage && <p>Something went wrong. {data.errorDataMessage}. <button onClick={() => dataActions.fetchAlbums(user)}>Please try again!</button></p>}
+        {data.errorDataMessage && <p>Something went wrong. {data.errorDataMessage}. <button onClick={() => dataActions.fetchAlbums(user_id)}>Please try again!</button></p>}
       </div>
     )
   }

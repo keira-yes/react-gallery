@@ -13,9 +13,9 @@ function App() {
         <Container maxWidth="lg">
           <Header />
           <Switch>
+            <Route path="/user/:user_id/albums/:album_id" component={Photos} />
+            <Route path="/user/:user_id/albums" component={Albums} />
             <Route path="/" component={Users} exact />
-            <Route path="/:user/albums" component={Albums} />
-            <Route path="/:user/album_:album" component={Photos} />
           </Switch>
         </Container>
       </div>

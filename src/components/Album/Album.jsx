@@ -53,7 +53,7 @@ class Album extends React.Component {
     const {album} = this.props;
 
     return (
-      <Link to={`/${album.userId}/album_${album.id}`} className={classes.Album}>
+      <Link to={`/user/${album.userId}/albums/${album.id}`} className={classes.Album}>
         <Card className={classes.Card}>
           <CardMedia
             image={cover}

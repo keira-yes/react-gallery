@@ -8,12 +8,13 @@ import {useData} from '../../hoc/useData';
 class Photos extends React.Component {
 
   componentDidMount() {
-    const {album} = this.props.match.params;
-    this.props.dataActions.fetchPhotos(album);
+    console.log(this.props.match)
+    const {album_id} = this.props.match.params;
+    this.props.dataActions.fetchPhotos(album_id);
   }
 
   render() {
-    const {album} = this.props.match.params;
+    const {album_id} = this.props.match.params;
     const {data, dataActions} = this.props;
     return (
       <SimpleReactLightbox>
@@ -35,7 +36,7 @@ class Photos extends React.Component {
           }
           {data.errorDataMessage &&
           <p>Something went wrong. {data.errorDataMessage}.
-            <button onClick={() => dataActions.fetchPhotos(album)}>Please try again!</button>
+            <button onClick={() => dataActions.fetchPhotos(album_id)}>Please try again!</button>
           </p>
           }
         </div>
