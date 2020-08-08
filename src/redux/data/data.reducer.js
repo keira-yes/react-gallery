@@ -3,7 +3,6 @@ import * as types from './data.types';
 const initialState = {
   isLoading: false,
   errorDataMessage: '',
-  users: [],
   albums: [],
   photos: []
 };
@@ -14,8 +13,6 @@ const dataReducer = (state = initialState, action) => {
       return {...state, isLoading: action.payload};
     case types.DISPLAY_DATA_ERROR :
       return {...state, errorDataMessage: action.payload};
-    case types.UPDATE_USERS:
-      return {...state, users: action.payload};
     case types.UPDATE_ALBUMS:
       return {...state, albums: action.payload};
     case types.UPDATE_PHOTOS:

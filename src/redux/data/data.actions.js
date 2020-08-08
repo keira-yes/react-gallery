@@ -14,35 +14,6 @@ export const displayDataError = payload => {
   }
 };
 
-export const fetchUsers = () => dispatch => {
-  dispatch(dataLoading(true));
-  dispatch(displayDataError(''));
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        throw new Error(response.statusText)
-      }
-    })
-    .then(data => {
-      dispatch(dataLoading(false));
-      dispatch(updateUsers(data));
-    })
-    .catch(error => {
-      dispatch(dataLoading(false));
-      dispatch(displayDataError(error.message));
-    })
-};
-
-export const updateUsers = payload => {
-  return {
-    type: types.UPDATE_USERS,
-    payload
-  }
-};
-
 export const fetchAlbums = user => dispatch => {
   dispatch(dataLoading(true));
   dispatch(displayDataError(''));
