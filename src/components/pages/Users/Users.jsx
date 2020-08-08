@@ -21,7 +21,7 @@ class Users extends React.Component {
             {users.users.map(item => <Grid item xs={3} key={item.id}><User user={item}/></Grid>)}
           </Grid>
         }
-        {users.errorMessage && <p>Something went wrong. {users.errorMessage}. <button onClick={() => usersActions.fetchUsers()}>Please try again!</button></p>}
+        {users.isError && <p>Something went wrong. <button onClick={() => usersActions.fetchUsers()}>Please try again!</button></p>}
       </div>
     )
   }

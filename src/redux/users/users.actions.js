@@ -8,7 +8,7 @@ export const loadingUsers = payload => {
   }
 };
 
-export const displayErrorUsers = payload => {
+export const errorUsers = payload => {
   return {
     type: types.ERROR_USERS,
     payload
@@ -17,7 +17,6 @@ export const displayErrorUsers = payload => {
 
 export const fetchUsers = () => dispatch => {
   dispatch(loadingUsers(true));
-  dispatch(displayErrorUsers(''));
 
   CallAPI.get('users')
     .then(data => {
@@ -26,7 +25,8 @@ export const fetchUsers = () => dispatch => {
     })
     .catch(error => {
       dispatch(loadingUsers(false));
-      dispatch(displayErrorUsers(error.message));
+      dispatch(errorUsers(true));
+      console.log('Fetch Users error', error);
     })
 };
 
