@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import cover from '../../../../img/cover.jpg';
+import CallAPI from "../../../../api/api";
 import classes from './Album.module.css';
 
 class Album extends React.Component {
@@ -15,33 +16,25 @@ class Album extends React.Component {
 
     this.state = {
       albumsPhotos: [],
-      errorAlbumsPhotos: '',
-      loading: false
+      errorAlbumsPhotos: ''
     }
   }
 
-  fetchAlbumsPhotos = () => {
-    this.setState({loading: true});
-    fetch(`https://jsonplaceholder.typicode.com/albums/${this.props.album.id}/photos`)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        else {
-          throw new Error(response.statusText)
-        }
-      })
+  fetchAlbumPhotos = () => {
+    CallAPI.get(`albums/${this.props.album.id}/photos`)
       .then(data => {
         if (this._isMounted) {
-          this.setState({albumsPhotos: data, loading: false})
+          this.setState({albumsPhotos: data})
         }
       })
-      .catch(error => this.setState({errorAlbumsPhotos: error, loading: false}))
+      .catch(error => {
+        this.setState({errorAlbumsPhotos: error.statusText})
+      })
   };
 
   componentDidMount() {
     this._isMounted = true;
-    this.fetchAlbumsPhotos();
+    this.fetchAlbumPhotos();
   }
 
   componentWillUnmount() {
@@ -49,7 +42,7 @@ class Album extends React.Component {
   }
 
   render() {
-    const {albumsPhotos, errorAlbumsPhotos, loading} = this.state;
+    const {albumsPhotos, errorAlbumsPhotos} = this.state;
     const {album} = this.props;
 
     return (
@@ -63,9 +56,7 @@ class Album extends React.Component {
           <CardContent>
             <h3 className={classes.Title}>{album.title}</h3>
             <p className={classes.Qty}>Photos:
-              {loading ? <span>Loading...</span> :
-                <span className={classes.Number}>{albumsPhotos.length}</span>
-              }
+              <span className={classes.Number}>{albumsPhotos.length}</span>
               {errorAlbumsPhotos && errorAlbumsPhotos}
             </p>
           </CardContent>
