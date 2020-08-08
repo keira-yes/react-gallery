@@ -1,4 +1,5 @@
 import * as types from './users.types';
+import CallAPI from "../../api/api";
 
 export const loadingUsers = payload => {
   return {
@@ -17,15 +18,8 @@ export const displayErrorUsers = payload => {
 export const fetchUsers = () => dispatch => {
   dispatch(loadingUsers(true));
   dispatch(displayErrorUsers(''));
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        throw new Error(response.statusText)
-      }
-    })
+
+  CallAPI.get('users')
     .then(data => {
       dispatch(loadingUsers(false));
       dispatch(updateUsers(data));
