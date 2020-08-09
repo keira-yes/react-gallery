@@ -1,7 +1,7 @@
 import React from 'react';
 import SimpleReactLightbox from 'simple-react-lightbox'
 import Photos from "./Photos/Photos";
-import classes from './PhotosPage.module.css';
+import classes from './photosPage.module.css';
 
 const PhotosPage = (props) => {
 
@@ -9,7 +9,7 @@ const PhotosPage = (props) => {
 
   return (
     <SimpleReactLightbox>
-      <div className={classes.Photos}>
+      <div className={classes.photos}>
         <h1 className="h1-title">Photos</h1>
 
         <button

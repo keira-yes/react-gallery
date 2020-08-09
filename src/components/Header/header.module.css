@@ -1,17 +1,17 @@
-.Header {
+.header {
   padding: 20px 0 30px;
 }
 
-.Logo {
+.logo {
   display: flex;
   align-items: center;
 }
 
-.Logo img {
+.logo img {
   width: 70px;
 }
 
-.Logo span {
+.logo span {
   font-family: 'Satisfy', sans-serif;
   font-size: 36px;
   color: #000;

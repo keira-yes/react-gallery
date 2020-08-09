@@ -1,13 +1,13 @@
 import React from 'react';
 import Albums from "./Albums/Albums";
-import classes from './AlbumsPage.module.css';
+import classes from './albumsPage.module.css';
 
 const AlbumsPage = (props) => {
 
   const {user_id} = props.match.params;
 
   return (
-    <div className={classes.Albums}>
+    <div className={classes.albums}>
       <h1 className="h1-title">Albums</h1>
 
       <button

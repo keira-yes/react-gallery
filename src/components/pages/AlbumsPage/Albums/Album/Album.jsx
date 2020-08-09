@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import cover from '../../../../../img/cover.jpg';
 import CallAPI from "../../../../../api/api";
-import classes from './Album.module.css';
+import classes from './album.module.css';
 
 class Album extends React.Component {
   _isMounted = false;
@@ -46,17 +46,17 @@ class Album extends React.Component {
     const {album} = this.props;
 
     return (
-      <Link to={`/user/${album.userId}/albums/${album.id}`} className={classes.Album}>
-        <Card className={classes.Card}>
+      <Link to={`/user/${album.userId}/albums/${album.id}`} className={classes.album}>
+        <Card className={classes.card}>
           <CardMedia
             image={cover}
             title="Contemplative Reptile"
-            className={classes.Image}
+            className={classes.image}
           />
           <CardContent>
-            <h3 className={classes.Title}>{album.title}</h3>
-            <p className={classes.Qty}>Photos:
-              <span className={classes.Number}>{albumsPhotos.length}</span>
+            <h3 className={classes.title}>{album.title}</h3>
+            <p className={classes.qty}>Photos:
+              <span className={classes.number}>{albumsPhotos.length}</span>
               {errorAlbumsPhotos && errorAlbumsPhotos}
             </p>
           </CardContent>
