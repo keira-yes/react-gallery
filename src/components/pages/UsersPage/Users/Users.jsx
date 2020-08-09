@@ -16,12 +16,14 @@ class Users extends React.Component {
 
     return (
       <>
-        {users.isLoading && <Loader />}
-        {users.isError && <ErrorMessage reloadData={usersActions.fetchUsers} />}
+        {users.isLoading ? <Loader /> :
 
-        <Grid container spacing={3}>
-          {users.users.map(item => <Grid item xs={3} key={item.id}><User user={item}/></Grid>)}
-        </Grid>
+          <Grid container spacing={3}>
+            {users.users.map(item => <Grid item xs={3} key={item.id}><User user={item}/></Grid>)}
+          </Grid>
+        }
+
+        {users.isError && <ErrorMessage reloadData={usersActions.fetchUsers} />}
       </>
     )
   }

@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import cover from '../../../../img/cover.jpg';
-import CallAPI from "../../../../api/api";
+import cover from '../../../../../img/cover.jpg';
+import CallAPI from "../../../../../api/api";
 import classes from './Album.module.css';
 
 class Album extends React.Component {
