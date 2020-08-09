@@ -4,7 +4,7 @@ import {Container} from '@material-ui/core';
 import Header from './Header/Header';
 import UsersPage from "./pages/UsersPage/UsersPage";
 import AlbumsPage from "./pages/AlbumsPage/AlbumsPage";
-import Photos from "./pages/Photos/Photos";
+import PhotosPage from "./pages/PhotosPage/PhotosPage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Container maxWidth="lg">
           <Header />
           <Switch>
-            <Route path="/user/:user_id/albums/:album_id" component={Photos} />
+            <Route path="/user/:user_id/albums/:album_id" component={PhotosPage} />
             <Route path="/user/:user_id/albums" component={AlbumsPage} />
             <Route path="/" component={UsersPage} exact />
           </Switch>
