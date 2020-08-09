@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {Grid} from '@material-ui/core';
-import { SRLWrapper } from 'simple-react-lightbox'
+import { SRLWrapper } from 'simple-react-lightbox';
 import {withPhotos} from '../../../../hoc/withPhotos';
 import Loader from "../../../UIComponents/Loader/Loader";
 import ErrorMessage from "../../../UIComponents/ErrorMessage/ErrorMessage";
@@ -39,3 +40,7 @@ class Photos extends React.Component {
 }
 
 export default withPhotos(Photos);
+
+Photos.propTypes = {
+  album_id: PropTypes.string.isRequired
+};

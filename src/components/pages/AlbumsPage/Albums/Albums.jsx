@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {Grid} from '@material-ui/core';
 import Album from "./Album/Album";
 import {withAlbums} from '../../../../hoc/withAlbums';
@@ -31,3 +32,7 @@ class Albums extends React.Component {
 }
 
 export default withAlbums(Albums);
+
+Albums.propTypes = {
+  user_id: PropTypes.string.isRequired
+};

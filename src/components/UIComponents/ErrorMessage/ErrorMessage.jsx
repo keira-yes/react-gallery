@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ErrorMessage = ({reloadData}) => {
   return (
@@ -9,3 +10,7 @@ const ErrorMessage = ({reloadData}) => {
 };
 
 export default ErrorMessage;
+
+ErrorMessage.propTypes = {
+  album_id: PropTypes.func
+};
