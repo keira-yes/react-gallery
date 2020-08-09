@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
-import dataReducer from "./data/data.reducer";
 import usersReducer from "./users/users.reducer";
+import albumsReducer from "./albums/albums.reducer";
+import photosReducer from "./photos/photos.reducer";
 
 export default combineReducers({
-  data: dataReducer,
-  users: usersReducer
+  users: usersReducer,
+  albums: albumsReducer,
+  photos: photosReducer
 })
