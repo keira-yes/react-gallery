@@ -15,8 +15,8 @@ class Album extends React.Component {
     super(props);
 
     this.state = {
-      albumsPhotos: [],
-      errorAlbumsPhotos: ''
+      albumPhotos: [],
+      isError: false
     }
   }
 
@@ -24,11 +24,12 @@ class Album extends React.Component {
     CallAPI.get(`albums/${this.props.album.id}/photos`)
       .then(data => {
         if (this._isMounted) {
-          this.setState({albumsPhotos: data})
+          this.setState({albumPhotos: data})
         }
       })
       .catch(error => {
-        this.setState({errorAlbumsPhotos: error.statusText})
+        this.setState({isError: true});
+        console.log('Fetch Album Photos error', error);
       })
   };
 
@@ -42,7 +43,7 @@ class Album extends React.Component {
   }
 
   render() {
-    const {albumsPhotos, errorAlbumsPhotos} = this.state;
+    const {albumPhotos, isError} = this.state;
     const {album} = this.props;
 
     return (
@@ -56,8 +57,11 @@ class Album extends React.Component {
           <CardContent>
             <h3 className={classes.title}>{album.title}</h3>
             <p className={classes.qty}>Photos:
-              <span className={classes.number}>{albumsPhotos.length}</span>
-              {errorAlbumsPhotos && errorAlbumsPhotos}
+
+              {isError ? <span>Something went wrong...</span> :
+                <span className={classes.number}>{albumPhotos.length}</span>
+              }
+
             </p>
           </CardContent>
         </Card>
