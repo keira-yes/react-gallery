@@ -102,3 +102,18 @@ button:active:focus {
   letter-spacing: 3px;
   cursor: pointer;
 }
+
+.link-btn {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #999;
+  background: transparent;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #999;
+  letter-spacing: 2px;
+}

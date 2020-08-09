@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ErrorMessage = ({reloadData}) => {
   return (
     <p>Something went wrong.
-      <button onClick={() => reloadData()}>Please try again!</button>
+      <button className="link-btn" onClick={() => reloadData()}>Please try again!</button>
     </p>
   )
 };
